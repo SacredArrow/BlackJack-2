@@ -5,10 +5,14 @@ package com.company;
  */
 public abstract class Player {
     Hand hand = new Hand();
+    String name;
     private Intellect intellect;
+    Condition condition=Condition.IN_GAME;
 
-    public Player(Intellect intellect) {
+    public Player(Intellect intellect, String name) {
+
         this.intellect = intellect;
+        this.name=name;
     }
 
     public void take(Card current) {
@@ -17,6 +21,9 @@ public abstract class Player {
 
     public Command decision() {
         int score=hand.getScore();
+        if (score>21)
+            return Command.STAND;
+
         return intellect.decide(score);
     }
 }
