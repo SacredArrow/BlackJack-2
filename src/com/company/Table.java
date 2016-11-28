@@ -23,7 +23,7 @@ public class Table {
     }
     public void makeBets(){
         for(Player player: players) {
-            if(player!=dealer) {
+            if(player!=dealer && player.condition!=Condition.DRAW) {
                 player.makeBet();
                 System.out.println(player.name + " bet " + player.hand.bet + ".");
             }
@@ -47,6 +47,12 @@ public class Table {
                     break;
                 if(command==Command.HIT)
                     dealer.deal(player);
+                if (command==Command.DOUBLE){
+                    dealer.deal(player);
+                    player.balance-=player.hand.bet;
+                    player.hand.bet*=2;
+                    break;
+                }
             }
         }
     }
@@ -81,9 +87,7 @@ public class Table {
                 if(player.condition==Condition.LOSE){
                     dealer.balance+=player.hand.bet;
                     }
-                if(player.condition==Condition.DRAW){
-                    player.balance+=player.hand.bet;
-                }
+
 
             }
         }
