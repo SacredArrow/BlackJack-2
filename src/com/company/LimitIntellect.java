@@ -18,4 +18,6 @@ public class LimitIntellect extends Intellect {
         else
             return Command.STAND;
     }
+
+
 }
