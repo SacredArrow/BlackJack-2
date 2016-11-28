@@ -15,6 +15,7 @@ public class Table {
     public Table() {
         players.add(new Computer(new LimitIntellect(14),new LimitBetter(25), s[(int)(Math.random()*s.length)], 1000));
         players.add(new Computer(new LimitIntellect(20),new HalfBetter(), s[(int)(Math.random()*s.length)], 1000));
+        players.add(new Computer(new RandomIntellect(),new RandomBetter(),s[(int)(Math.random()*s.length)],1000));
         System.out.println("Enter your name, Player");
         players.add(new Human(new ConsoleIntellect(),new ConsoleBetter(), in.nextLine(),1000));
         dealer = new Dealer();
@@ -27,6 +28,7 @@ public class Table {
                 System.out.println(player.name + " bet " + player.hand.bet + ".");
             }
         }
+        System.out.println();
     }
     public void dealCards(){
         for(Player player: players) {
@@ -93,5 +95,15 @@ public class Table {
             System.out.println(player.name + " now has balance of " + player.balance + ".");
         }
         System.out.println();
+        dealer.checkDeck();
+        List<Player> players2 = new LinkedList<>();
+        for(Player player:players){
+            if (player.balance==0)
+                players2.add(player);
+        }
+        for(Player player:players2){
+            players.remove(player);
+            System.out.println(player.name+" has lost all his money!");
+        }
     }
 }

@@ -15,4 +15,8 @@ public class Dealer extends Computer {
         Card current = deck.pop();
         player.take(current);
     }
+    public void checkDeck(){
+        if(deck.size()<=17)
+            deck=new Deck();
+    }
 }
