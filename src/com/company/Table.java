@@ -48,10 +48,14 @@ public class Table {
                 if(command==Command.HIT)
                     dealer.deal(player);
                 if (command==Command.DOUBLE){
-                    dealer.deal(player);
-                    player.balance-=player.hand.bet;
-                    player.hand.bet*=2;
-                    break;
+                    if(player.balance>=player.hand.bet) {
+                        dealer.deal(player);
+                        player.balance -= player.hand.bet;
+                        player.hand.bet *= 2;
+                        System.out.println(player.hand.getScore() + ":" + player.hand);
+                        break;
+                    }
+                    else System.out.println("You don't have enough money to double!");
                 }
             }
         }
@@ -109,5 +113,7 @@ public class Table {
             players.remove(player);
             System.out.println(player.name+" has lost all his money!");
         }
+        if(dealer.balance<=0)
+            System.out.println("Game is over!");
     }
 }
