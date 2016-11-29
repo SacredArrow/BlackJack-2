@@ -20,7 +20,7 @@ public class ConsoleIntellect extends Intellect {
                 return Command.STAND;
             }
             if("double".startsWith(c.toLowerCase())){
-                return Command.STAND;
+                return Command.DOUBLE;
             }
 
         }
