@@ -11,7 +11,7 @@ public class ConsoleIntellect extends Intellect {
     @Override
     public Command decide(int score) {
         while (true){
-            System.out.println("HIT / STAND / DOUBLE ?");
+            System.out.println("HIT / STAND / DOUBLE / SPLIT ? ");
             String c=in.nextLine();
             if("hit".startsWith(c.toLowerCase())){
                 return Command.HIT;
@@ -22,7 +22,9 @@ public class ConsoleIntellect extends Intellect {
             if("double".startsWith(c.toLowerCase())){
                 return Command.DOUBLE;
             }
-
+            if("split".startsWith(c.toLowerCase())){
+                return Command.SPLIT;
+            }
         }
 
     }

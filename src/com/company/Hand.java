@@ -7,6 +7,18 @@ import java.util.LinkedList;
  */
 public class Hand extends LinkedList<Card> {
     int bet;
+    Condition condition=Condition.IN_GAME;
+    Player owner;
+
+    public Hand(Player owner) {
+        this.owner = owner;
+    }
+    public void makeBet(){
+        bet=owner.makeBet();
+    }
+    public void take(Card card){
+        this.add(card);
+    }
 
     public int getScore() {
         int sum=0;

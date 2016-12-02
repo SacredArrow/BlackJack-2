@@ -11,9 +11,9 @@ public class Dealer extends Computer {
     }
 
 
-    public void deal(Player player) {
+    public void deal(Hand hand) {
         Card current = deck.pop();
-        player.take(current);
+        hand.take(current);
     }
     public void checkDeck(){
         if(deck.size()<=17)
